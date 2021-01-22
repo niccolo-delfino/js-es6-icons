@@ -22,6 +22,30 @@ nav.ricerca{
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 35px;
+  background-color: #29B1DE;
+  font-size: 25px;
   text-transform: uppercase;
+  line-height: 80px;
+
+}
+
+label{
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.icone{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.icona{
+  width: calc(100% / 5 - 50px);
+  padding: 30px 0px;
+  margin: 25px;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: -4px 7px 10px 2px rgba(0,0,0,0.32);
 }
