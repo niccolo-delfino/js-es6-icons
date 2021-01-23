@@ -99,17 +99,41 @@ $(document).ready(function functionName() {
     }
   ];
   const colors = ['blue','orange','purple'];
-  const types = [];
 
+// VOLEVO SEGUIRE IL RAGIONAMENTO DEGLi INDICI, MA STAVO FACENDO UN DISATRO, GG
+  // const types = [];
+  //
+  // icons.forEach((element) => {
+  //   if (!types.includes(element.type)) {
+  //     types.push(element.type);
+  //   }
+  // });
+  //
+  // console.log(types);
+
+// ASSEGNO I COLORI ALLE ICONS
+  for (var i = 0; i < icons.length; i++) {
+    if (icons[i].type == 'animal') {
+      icons[i].color = colors[0];
+    } else if (icons[i].type == 'vegetable') {
+      icons[i].color = colors[1];
+    }else if (icons[i].type == 'user') {
+      icons[i].color = colors[2];
+    };
+    console.log(icons[i]);
+  };
+
+// STAMPO LE ICONE
   icons.forEach((element) => {
-    if (!types.includes(element.type)) {
-      types.push(element.type);
-    }
+    const {name, prefix, type, family, color} = element;
+
+    $('.icone').append(
+    ` <div class="icona">
+        <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+        <div class="nome">${name.toUpperCase()}</div>
+      </div>`
+    );
   });
-
-  console.log(types);
-
-
 
 
 
