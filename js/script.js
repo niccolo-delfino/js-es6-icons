@@ -100,16 +100,15 @@ $(document).ready(function functionName() {
   ];
   const colors = ['blue','orange','purple'];
 
-// VOLEVO SEGUIRE IL RAGIONAMENTO DEGLi INDICI, MA STAVO FACENDO UN DISATRO, GG
-  // const types = [];
-  //
-  // icons.forEach((element) => {
-  //   if (!types.includes(element.type)) {
-  //     types.push(element.type);
-  //   }
-  // });
-  //
-  // console.log(types);
+// VOLEVO SEGUIRE IL RAGIONAMENTO DEGL' INDICI, MA STAVO FACENDO UN DISATRO, GG
+// ESTRAPOLO I TIPI PER POTERLI INSERIRE NELLA SELECT
+  const types = [];
+
+  icons.forEach((element) => {
+    if (!types.includes(element.type)) {
+      types.push(element.type);
+    }
+  });
 
 // ASSEGNO I COLORI ALLE ICONS
   for (var i = 0; i < icons.length; i++) {
@@ -134,6 +133,35 @@ $(document).ready(function functionName() {
       </div>`
     );
   });
+
+//AGGIUNGO I VARI TIPI ALLA SELECT
+  types.forEach((element) => {
+    $('select').append(
+      `<option value="${element}">${element}</option>`
+    )
+  });
+
+//INTERCETTO I TIPO DI SELEZIONE
+
+
+
+
+  // const iconeFiltrate = icons.filter((element) => {
+  //   return element.type == selected
+  //   console.log(inconeFiltrate);
+  // });
+
+  $('select').change(function() {
+    var selezionato = $(this).val();
+  });
+  console.log(selezionato);
+
+
+
+
+
+
+
 
 
 
