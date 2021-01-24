@@ -102,13 +102,25 @@ $(document).ready(function functionName() {
 
 // VOLEVO SEGUIRE IL RAGIONAMENTO DEGL' INDICI, MA STAVO FACENDO UN DISATRO, GG
 // ESTRAPOLO I TIPI PER POTERLI INSERIRE NELLA SELECT
+// CREO TRE ARRAY PER I TIPI DEGLI ELEMENTI
   const types = [];
+  const animalIcons = [];
+  const vegetableIcons = [];
+  const userIcons = [];
 
   icons.forEach((element) => {
     if (!types.includes(element.type)) {
       types.push(element.type);
-    }
+    };
+    if (element.type == 'animal') {
+      animalIcons.push(element);
+    } else if (element.type == 'vegetable') {
+      vegetableIcons.push(element);
+    }else if (element.type == 'user') {
+      userIcons.push(element);
+    };
   });
+
 
 // ASSEGNO I COLORI ALLE ICONS
   for (var i = 0; i < icons.length; i++) {
@@ -119,53 +131,57 @@ $(document).ready(function functionName() {
     }else if (icons[i].type == 'user') {
       icons[i].color = colors[2];
     };
-    console.log(icons[i]);
   };
 
 // STAMPO LE ICONE
-  icons.forEach((element) => {
-    const {name, prefix, type, family, color} = element;
+  stampa(icons);
 
-    $('.icone').append(
-    ` <div class="icona">
-        <i class="${family} ${prefix}${name}" style="color:${color}"></i>
-        <div class="nome">${name.toUpperCase()}</div>
-      </div>`
-    );
-  });
-
-//AGGIUNGO I VARI TIPI ALLA SELECT
+// AGGIUNGO I VARI TIPI ALLA SELECT
   types.forEach((element) => {
     $('select').append(
       `<option value="${element}">${element}</option>`
     )
   });
 
-//INTERCETTO I TIPO DI SELEZIONE
 
-
-
-
-  // const iconeFiltrate = icons.filter((element) => {
-  //   return element.type == selected
-  //   console.log(inconeFiltrate);
-  // });
-
+// INTERCETTO I TIPO DI SELEZIONE E LI STAMPO
+// PRIMA DI OGNI STAMPA RIMUOVO LA PRECEDENTE
   $('select').change(function() {
-    var selezionato = $(this).val();
+    const selezionato = $(this).val();
+    console.log(selezionato);
+
+    $( ".icona" ).remove();
+    stampa(icons);
+
+    if (selezionato == 'animal') {
+
+      $( ".icona" ).remove();
+      stampa(animalIcons);
+
+    } else if (selezionato == 'vegetable') {
+
+      $( ".icona" ).remove();
+      stampa(vegetableIcons);
+    }else if (selezionato == 'user') {
+
+      $( ".icona" ).remove();
+      stampa(userIcons);
+    };
   });
-  console.log(selezionato);
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
+
+// FUNZIONE DI STAMPA
+function stampa(array) {
+  array.forEach((element) => {
+    const {name, prefix, type, family, color} = element;
+
+
+    $('.icone').append(
+      ` <div class="icona">
+      <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+      <div class="nome">${name.toUpperCase()}</div>
+      </div>`
+    );
+  });
+};
